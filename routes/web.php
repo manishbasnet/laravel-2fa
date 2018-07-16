@@ -24,3 +24,5 @@ Route::get('/complete-registration','Auth\RegisterController@completeRegistratio
 Route::post('/2fa', function () {
    return redirect(URL()->previous());
 })->name('2fa')->middleware('2fa');
+
+Route::get('/re-authenticate','HomeController@reauthenticate');
