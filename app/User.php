@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','google2fa_secret',
     ];
 
     /**
@@ -24,6 +24,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','google2fa_secret',
     ];
+
+    public function setGoogle2faSecretAtrribute($value)
+    {
+        $this->attributes['google2fa_secret'] = encrypt($value);
+    }
+    public function getGoogle2faSecretAtrribute($value)
+    {
+        return decrypt($value);
+    }
 }
